@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/01/28 19:51:47 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/02/01 05:28:32 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # include "ft_printf.h"
 
 #include <stdio.h>//////////////////
+
+# define WIDTH		2000
+# define HEIGHT		1200
 
 # define ESP		65307
 # define UP			119
@@ -100,6 +103,10 @@ typedef struct		s_env
 	char	*char_pic;
 	int		h_pic;
 	int		w_pic;
+	t_pt2d	hit_h;
+	t_pt2d	hit_v;
+	t_pt2d	hit;
+	char	vorh;
 	int		bpp_pic;
 	int		size_line_pic;
 	int		endian_pic;
@@ -114,7 +121,7 @@ int			pointer_motion_hook(int x, int y, t_env *env);
 
 void		ft_getmap(t_env *env, char *file);
 void		ft_zoom_map(t_env *env);
-double		ft_calcul(t_env env,  double angle);
+double		ft_calcul(t_env *env,  double angle);
 void		ft_draw(t_env *env);
 double		ft_dtor(float degre);
 t_pt2d		ft_make_increment(t_env env, double angle, char axe);

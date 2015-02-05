@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/01/28 20:09:31 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/02/05 04:29:31 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	ft_initenv(t_env *env, int width, int height)
 	env->char_img = mlx_get_data_addr(env->img, &env->bpp, &env->size_line, &env->endian);
 	env->pic = mlx_xpm_file_to_image(env->mlx, "mur.xpm", &env->w_pic, &env->h_pic);
 	env->char_pic = mlx_get_data_addr(env->pic, &env->bpp_pic, &env->size_line_pic, &env->endian_pic);
-	mlx_xpm_to_image(env->mlx, &env->char_pic
-
-	dprintf(1, "%s\n", "sdfsdf");
+	ft_bzero(&env->input, sizeof(env->input));
 }
 
 int		main(int argc, char **argv)
@@ -45,7 +43,7 @@ int		main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		ft_initenv(&env, 2500, 1200);
+		ft_initenv(&env, WIDTH, HEIGHT);
 		env.bruno.d_proj = (env.w_win / 2) / tan(ft_dtor(30));
 		env.i_angle = 60.0 / (double)env.w_win;
 		ft_getmap(&env, argv[1]);
@@ -69,7 +67,6 @@ int		main(int argc, char **argv)
 		env.mid = env.h_win / 2;
 		ft_draw(&env);
 		mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
-	mlx_put_image_to_window(env.mlx, env.win, env.pic, 0, 0);
 		mlx_do_key_autorepeatoff(env.mlx);
 		mlx_hook(env.win, KeyPress, KeyPressMask, key_press_hook, &env);
 		mlx_hook(env.win, KeyRelease, KeyReleaseMask, key_release_hook, &env);
