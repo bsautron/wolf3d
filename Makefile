@@ -34,13 +34,12 @@ HEADER = $(DIR_H)/ft_minishell.h \
 NAME = wolf3d
 FLAGS = -Wall -Wextra -Werror
 LX11 = -framework OpenGL -framework AppKit
-LIB = -L./libft/ft_lib -lft
-LPRINTF= -L./libft/ft_printf -lftprintf
+LIB = -L./libft/ -lft
 
 all: dor libs $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(LPRINTF) $(LX11)
+	@$(CC) -o $(NAME) $(OBJ) $(LIB) $(LX11)
 	@echo "===> Wolf3d: Made"
 
 libs:

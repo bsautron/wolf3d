@@ -68,9 +68,9 @@ int		main(int argc, char **argv)
 		ft_draw(&env);
 		mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
 		mlx_do_key_autorepeatoff(env.mlx);
-		mlx_hook(env.win, KeyPress, KeyPressMask, key_press_hook, &env);
-		mlx_hook(env.win, KeyRelease, KeyReleaseMask, key_release_hook, &env);
-		mlx_hook(env.win, MotionNotify, PointerMotionMask, pointer_motion_hook, &env);
+		mlx_hook(env.win, 2, (1L<<0), key_press_hook, &env);
+		mlx_hook(env.win, 3, (1L<<1), key_release_hook, &env);
+		mlx_hook(env.win, 6, (1L<<6), pointer_motion_hook, &env);
 		mlx_loop_hook(env.mlx, expose_hook, &env);
 		mlx_loop(env.mlx);
 	}
