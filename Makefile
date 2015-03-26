@@ -28,7 +28,7 @@ SRC = main.c \
 OBJ = $(SRC:.c=.o)
 NAME = wolf3d
 FLAGS = -Wall -Wextra -Werror
-LX11 = -L/usr/X11/lib -lmlx -lXext -lX11
+LX11 = -framework OpenGL -framework AppKit
 LIB = -L./libft/ft_lib -lft
 LPRINTF= -L./libft/ft_printf -lftprintf
 

@@ -11,10 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
-# define WLOF3D_H
+# define WOLF3D_H
 
 # include <mlx.h>
-# include <X11/Xlib.h>
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
