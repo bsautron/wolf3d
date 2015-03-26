@@ -6,24 +6,26 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/02/01 05:28:32 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 00:39:55 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
+# include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <libft.h>
-# include <get_next_line.h>
-# include <mlx.h>
+# include <time.h>
+# include <myx.h>
+# include "libft.h"
+# include "get_next_line.h"
 
 #include <stdio.h>//////////////////
 
-# define WIDTH		2000
+# define WIDTH		2500
 # define HEIGHT		1200
 
 # define ESP		65307
@@ -76,6 +78,17 @@ typedef struct		s_input
 	char			run;
 }					t_input;
 
+typedef struct		s_pic
+{
+	void	*img;
+	char	*char_img;
+	int		height;
+	int		width;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}					t_pic;
+
 typedef struct		s_env
 {
 	void	*mlx;
@@ -87,27 +100,17 @@ typedef struct		s_env
 	size_t	h_minimap;
 	size_t	h_map;
 	size_t	w_map;
-	void	*img;
-	char	*char_img;
-	int		size_line;
-	int		endian;
-	int		bpp;
+	t_pic	img;
 	size_t	sz_wall;
 	double	i_angle;
 	t_perso	bruno;
 	t_input	input;
-	int		mid;
-	void	*pic;
-	char	*char_pic;
-	int		h_pic;
-	int		w_pic;
+	t_pic	pic[2];
 	t_pt2d	hit_h;
 	t_pt2d	hit_v;
 	t_pt2d	hit;
+	int		mid;
 	char	vorh;
-	int		bpp_pic;
-	int		size_line_pic;
-	int		endian_pic;
 }					t_env;
 
 

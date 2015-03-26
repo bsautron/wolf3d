@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 04:40:00 by bsautron          #+#    #+#             */
-/*   Updated: 2015/01/23 05:56:11 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/02/11 04:24:02 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,7 @@ int			key_hook(int keycode, t_env *env)
 	if (env->bruno.angle < 0)
 		env->bruno.angle += 360;
 	
-	mlx_destroy_image(env->mlx, env->img);
-	env->img = mlx_new_image(env->mlx, env->w_win, env->h_win);
 	ft_draw(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	dprintf(1, "BRUNO: x = %f y = %f\n", env->bruno.pos.x, env->bruno.pos.y);
-	dprintf(1, "ANGLE: = %f\n", env->bruno.angle);
-	ft_putchar(10);
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	return (0);
 }

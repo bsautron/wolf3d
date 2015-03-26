@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 09:35:27 by bsautron          #+#    #+#              #
-#    Updated: 2015/01/28 09:35:37 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/27 00:40:25 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ HEADER = $(DIR_H)/ft_minishell.h \
 		 $(DIR_H)/libft.h \
 		 $(DIR_H)/libl.h \
 		 $(DIR_H)/libld.h \
+		 $(DIR_H)/myx.h \
 		 $(DIR_H)/get_next_line.h
 NAME = wolf3d
 FLAGS = -Wall -Wextra -Werror
-LX11 = -framework OpenGL -framework AppKit
+LX11 = -framework OpenGL -framework AppKit -lmlx
 LIB = -L./libft/ -lft
 
 all: dor libs $(NAME)

@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/01/28 19:43:22 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/02/16 01:21:33 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,12 @@ static void	ft_viseur(t_env *env)
 	j = env->w_win / 2 + 10;
 	while (i < (int)env->w_win / 2 - 2)
 	{
-		env->char_img[i * 4 + (env->h_win / 2) * env->size_line] = 0x01;
-		env->char_img[i * 4 + (env->h_win / 2) * env->size_line + 1] = 0x44;
-		env->char_img[i * 4 + (env->h_win / 2) * env->size_line + 2] = 0xB7;
-		env->char_img[j * 4 + (env->h_win / 2) * env->size_line] = 0x01;
-		env->char_img[j * 4 + (env->h_win / 2) * env->size_line + 1] = 0x44;
-		env->char_img[j * 4 + (env->h_win / 2) * env->size_line + 2] = 0xB7;
+		env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line] = 0x01;
+		env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
+		env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
+		env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line] = 0x01;
+		env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
+		env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
 		j--;
 		i++;
 	}
@@ -136,18 +136,18 @@ static void	ft_viseur(t_env *env)
 	j = env->h_win / 2 + 10;
 	while (i < (int)env->h_win / 2 - 2)
 	{
-		env->char_img[env->w_win / 2 * 4 + i * env->size_line] = 0x01;
-		env->char_img[env->w_win / 2 * 4 + i * env->size_line + 1] = 0x44;
-		env->char_img[env->w_win / 2 * 4 + i * env->size_line + 2] = 0xB7;
-		env->char_img[env->w_win / 2 * 4 + j * env->size_line] = 0x01;
-		env->char_img[env->w_win / 2 * 4 + j * env->size_line + 1] = 0x44;
-		env->char_img[env->w_win / 2 * 4 + j * env->size_line + 2] = 0xB7;
+		env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line] = 0x01;
+		env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line + 1] = 0x44;
+		env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line + 2] = 0xB7;
+		env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line] = 0x01;
+		env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line + 1] = 0x44;
+		env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line + 2] = 0xB7;
 		j--;
 		i++;
 	}
-	env->char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->size_line] = 0x01;
-	env->char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->size_line + 1] = 0x44;
-	env->char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->size_line + 2] = 0xB7;
+	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line] = 0x01;
+	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line + 1] = 0x44;
+	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line + 2] = 0xB7;
 }
 
 static void	ft_string(t_env *env)
@@ -175,11 +175,12 @@ static void	ft_string(t_env *env)
 int		expose_hook(t_env *env)
 {
 	ft_process(env);
-	mlx_destroy_image(env->mlx, env->img);
-	env->img = mlx_new_image(env->mlx, env->w_win, env->h_win);
+	mlx_destroy_image(env->mlx, env->img.img);
+	env->img.img = mlx_new_image(env->mlx, env->w_win, env->h_win);
+	env->img.char_img = mlx_get_data_addr(env->img.img, &env->img.bpp, &env->img.size_line, &env->img.endian);
 	ft_draw(env);
 	ft_viseur(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	ft_string(env);
 	return (0);
 }
