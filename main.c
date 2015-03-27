@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 00:44:20 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 01:08:51 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ void	ft_initenv(t_env *env, int width, int height)
 	env->w_win = width;
 	env->h_win = height;
 	env->sz_wall = 128;
-	/*
 	env->img.img = mlx_new_image(env->mlx, env->w_win, env->h_win);
 	env->img.char_img = mlx_get_data_addr(env->img.img, &env->img.bpp, &env->img.size_line, &env->img.endian);
 	env->pic[0].img = mlx_xpm_file_to_image(env->mlx, "mur.xpm", &env->pic[0].width, &env->pic[0].height);
-	env->pic[1].img = mlx_xpm_file_to_image(env->mlx, "sol.xpm", &env->pic[1].width, &env->pic[1].height);
+	//env->pic[1].img = mlx_xpm_file_to_image(env->mlx, "sol.xpm", &env->pic[1].width, &env->pic[1].height);
 	env->pic[0].char_img = mlx_get_data_addr(env->pic[0].img, &env->pic[0].bpp, &env->pic[0].size_line, &env->pic[0].endian);
-	env->pic[1].char_img = mlx_get_data_addr(env->pic[1].img, &env->pic[1].bpp, &env->pic[1].size_line, &env->pic[1].endian);
-	*/
+	//env->pic[1].char_img = mlx_get_data_addr(env->pic[1].img, &env->pic[1].bpp, &env->pic[1].size_line, &env->pic[1].endian);
 	ft_bzero(&env->input, sizeof(env->input));
 }
 
@@ -51,7 +49,7 @@ int		main(int argc, char **argv)
 		env.bruno.d_proj = (env.w_win / 2) / tan(ft_dtor(30));
 		env.i_angle = 60.0 / (double)env.w_win;
 		ft_getmap(&env, argv[1]);
-/*
+
 		ft_zoom_map(&env);
 		i = 0;
 		while (i < env.h_minimap)
@@ -75,9 +73,7 @@ int		main(int argc, char **argv)
 		mlx_hook(env.win, KeyPress, KeyPressMask, key_press_hook, &env);
 		mlx_hook(env.win, KeyRelease, KeyReleaseMask, key_release_hook, &env);
 		mlx_hook(env.win, MotionNotify, PointerMotionMask, pointer_motion_hook, &env);
-		mlx_loop_hook(env.mlx, expose_hook, &env);*/
-		(void)j;
-		(void)i;
+		mlx_loop_hook(env.mlx, expose_hook, &env);
 		mlx_loop(env.mlx);
 	}
 	else

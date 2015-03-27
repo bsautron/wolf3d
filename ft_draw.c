@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/02/16 01:26:27 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 01:06:45 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ static void	ft_floor(t_env *env, int x, double h, int the_x)
 	(void)the_x;
 	while (sol > env->mid + h / 2)
 	{
+		/*
 		if (y_p > env->pic[1].height - 1)
 			y_p = env->pic[1].height - 1;
+			*/
 		env->img.char_img[x * 4 + (int)sol * env->img.size_line] = 0x20;
 			//env->pic[1].char_img[(int)the_x * 4 +  (int)y_p * env->pic[1].size_line];
 		env->img.char_img[x * 4 + (int)sol * env->img.size_line + 1] = 0x20;
@@ -147,7 +149,8 @@ void		ft_draw(t_env *env)
 		ft_murinf(env, x, h, the_mur_x);
 		ft_mursup2(env, x, h, the_mur_x);
 		ft_mursup(env, x, h, the_mur_x);
-		ft_floor(env, x, h, the_floor_x);
+		//ft_floor(env, x, h, the_floor_x);
+		(void)ft_floor;
 		alpha = alpha - env->i_angle;
 		x++;
 	}

@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 09:35:27 by bsautron          #+#    #+#              #
-#    Updated: 2015/03/27 00:40:25 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/27 00:58:08 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ libs:
 	@make -C libft/
 
 obj/%.o: %.c includes/wolf3d.h
+	@echo "	$<"
 	@$(CC) -o $@ $(FLAGS) -I includes/ -c $<
 
 dor:

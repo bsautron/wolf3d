@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/02/16 01:21:33 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 01:09:40 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ static void	ft_string(t_env *env)
 
 int		expose_hook(t_env *env)
 {
+	dprintf(1, "%s\n", "sdf");
 	ft_process(env);
 	mlx_destroy_image(env->mlx, env->img.img);
 	env->img.img = mlx_new_image(env->mlx, env->w_win, env->h_win);
