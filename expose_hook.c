@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 05:29:44 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 05:45:41 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,13 +162,13 @@ static void	ft_string(t_env *env)
 	mlx_string_put(env->mlx, env->win, 150, 70, 0xB74401, "Turn Right:  ->");
 	mlx_string_put(env->mlx, env->win, 150, 90, 0xB74401, "Run:         Shift");
 	text = ft_itoa(env->bruno.pos.y);
-	mlx_string_put(env->mlx, env->win, env->w_win / 2 - 15, 70, 0xB74401, text);
+	mlx_string_put(env->mlx, env->win, env->w_win / 2 - 30, 70, 0xB74401, text);
 	free(text);
 	text = ft_itoa(env->bruno.pos.x);
-	mlx_string_put(env->mlx, env->win, env->w_win / 2 + 15, 70, 0xB74401, text);
+	mlx_string_put(env->mlx, env->win, env->w_win / 2 + 20, 70, 0xB74401, text);
 	free(text);
 	text = ft_itoa((int)env->bruno.angle);
-	mlx_string_put(env->mlx, env->win, env->w_win / 2 + 45, 70, 0xB74401, text);
+	mlx_string_put(env->mlx, env->win, env->w_win / 2 + 70, 70, 0xB74401, text);
 	free(text);
 	if (env->bruno.angle > 45 && env->bruno.angle <= 135)
 		mlx_string_put(env->mlx, env->win, env->w_win / 2, 50, 0xB74401, "North");
@@ -189,7 +189,5 @@ int		expose_hook(t_env *env)
 	mlx_do_sync(env->mlx);
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	ft_string(env);
-	(void)ft_viseur;
-	(void)ft_string;
 	return (0);
 }
