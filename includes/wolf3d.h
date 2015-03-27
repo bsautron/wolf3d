@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 02:50:42 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 05:37:43 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@
 
 #include <stdio.h>//////////////////
 
-# define WIDTH		2500
-# define HEIGHT		1200
+# define WIDTH		1500
+# define HEIGHT		800
 
 # define ESP		53
-# define UP			119
-# define DOWN		115
-# define LEFT		97
-# define RIGHT		100
-# define W_UP		65362
-# define W_DOWN		65364
-# define W_RIGHT	65363
-# define W_LEFT		65361
-# define RUN		65505
+# define UP			13
+# define DOWN		1
+# define RIGHT		2
+# define LEFT		0
+# define W_UP		126
+# define W_DOWN		125
+# define W_RIGHT	124
+# define W_LEFT		123
+# define RUN		257
 
 typedef struct		s_pt2d
 {

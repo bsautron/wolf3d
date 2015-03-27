@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 05:24:06 by bsautron          #+#    #+#             */
-/*   Updated: 2015/01/26 15:18:16 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 05:18:43 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	ft_makemap(t_env *env, char *file)
 			j++;
 		}
 		i++;
+		free(line);
 	}
 	env->map[i] = NULL;
 	close(fd);
@@ -85,6 +86,7 @@ void		ft_getmap(t_env *env, char *file)
 	{
 		env->w_map = fmax(env->w_map, ft_nbcol(line));
 		env->h_map = env->h_map + 1;
+		free(line);
 	}
 	env->w_minimap = env->w_map;
 	env->h_minimap = env->h_map;
