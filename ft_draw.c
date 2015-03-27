@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 06:46:37 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 07:36:33 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,49 +55,29 @@ static void	ft_mursup(t_env *env, int x, double h, int the_x)
 {
 	double		y;
 	double		y_p;
+	int			nuance;
 
 	y = env->mid;
 	y_p = env->pic[0].height / 2;
+	nuance = 0;
 	while (y >= 0 && y - env->mid > -h / 2)
 	{
 		if (y_p < 0)
 			y_p = 0;
 		if (env->vorh == 'h' && env->alpha >= 0 && env->alpha < 180)
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 255;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 102;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 0;
-		}
+			nuance = 0x0066FF;
 		else if (env->vorh == 'h' && env->alpha >= 180)
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 0;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 153;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 0;
-		}
-		if (env->vorh == 'v' && env->alpha >= 90 && env->alpha < 270)
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 51;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 0;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 255;
-		}
+			nuance = 0xAA6699;
+		else if (env->vorh == 'v' && env->alpha >= 90 && env->alpha < 270)
+			nuance = 0xFF0033;
 		else if (env->vorh == 'v' && (env->alpha < 90 || env->alpha >= 270))
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 0;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 255;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 255;
-		}
+			nuance = 0xFFFF00;
+		env->img.char_img[x * 4 + (int)y * env->img.size_line] =
+			env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * (unsigned char)nuance;
+		env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
+			env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * (unsigned char)(nuance >> 8);
+		env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
+			env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * (unsigned char)(nuance >> 16);
 		y_p -= env->pic[0].height / h;
 		y--;
 	}
@@ -108,6 +88,7 @@ static void	ft_murinf(t_env *env, int x, double h, int the_x)
 {
 	double		y;
 	double		y_p;
+	int			nuance;
 
 	y = env->mid;
 	y_p = env->pic[0].height / 2;
@@ -119,41 +100,19 @@ static void	ft_murinf(t_env *env, int x, double h, int the_x)
 
 
 		if (env->vorh == 'h' && env->alpha >= 0 && env->alpha < 180)
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 255;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 102;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 0;
-		}
+			nuance = 0x0066FF;
 		else if (env->vorh == 'h' && env->alpha >= 180)
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 0;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 153;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 0;
-		}
-		if (env->vorh == 'v' && env->alpha >= 90 && env->alpha < 270)
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 51;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 0;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 255;
-		}
+			nuance = 0xAA6699;
+		else if (env->vorh == 'v' && env->alpha >= 90 && env->alpha < 270)
+			nuance = 0xFF0033;
 		else if (env->vorh == 'v' && (env->alpha < 90 || env->alpha >= 270))
-		{
-			env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * 0;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * 255;
-			env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-				env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * 255;
-		}
+			nuance = 0xFFFF00;
+		env->img.char_img[x * 4 + (int)y * env->img.size_line] =
+			env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * (unsigned char)nuance;
+		env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
+			env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1] + 0.1 * (unsigned char)(nuance >> 8);
+		env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
+			env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * (unsigned char)(nuance >> 16);
 		y_p += env->pic[0].height / h;
 		y++;
 	}

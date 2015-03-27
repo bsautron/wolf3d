@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 05:45:41 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 07:33:21 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,9 @@ static void	ft_string(t_env *env)
 	mlx_string_put(env->mlx, env->win, 50, 70, 0xB74401, "Down:   S");
 	mlx_string_put(env->mlx, env->win, 50, 90, 0xB74401, "Right:  D");
 	mlx_string_put(env->mlx, env->win, 50, 110, 0xB74401, "Down:   S");
-	mlx_string_put(env->mlx, env->win, 150, 50, 0xB74401, "Turn Left:   <-");
-	mlx_string_put(env->mlx, env->win, 150, 70, 0xB74401, "Turn Right:  ->");
-	mlx_string_put(env->mlx, env->win, 150, 90, 0xB74401, "Run:         Shift");
+	mlx_string_put(env->mlx, env->win, 190, 50, 0xB74401, "Turn Left:   <-");
+	mlx_string_put(env->mlx, env->win, 190, 70, 0xB74401, "Turn Right:  ->");
+	mlx_string_put(env->mlx, env->win, 190, 90, 0xB74401, "Run:         Shift");
 	text = ft_itoa(env->bruno.pos.y);
 	mlx_string_put(env->mlx, env->win, env->w_win / 2 - 30, 70, 0xB74401, text);
 	free(text);
