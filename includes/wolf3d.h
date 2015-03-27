@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 00:39:55 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 02:50:42 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define WIDTH		2500
 # define HEIGHT		1200
 
-# define ESP		65307
+# define ESP		53
 # define UP			119
 # define DOWN		115
 # define LEFT		97

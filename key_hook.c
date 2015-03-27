@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 04:40:00 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 01:07:21 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 02:49:42 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			key_hook(int keycode, t_env *env)
 {
-	dprintf(1, "%d\n", keycode);
+	dprintf(1, "%s\n", "iuhferfiuherfouefr");
 	if (keycode == ESP)
 		exit(0);
 	if (keycode == UP)
@@ -45,8 +45,5 @@ int			key_hook(int keycode, t_env *env)
 		env->bruno.angle -= 360;
 	if (env->bruno.angle < 0)
 		env->bruno.angle += 360;
-	
-	ft_draw(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	return (0);
 }
