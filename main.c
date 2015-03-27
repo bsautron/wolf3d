@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 01:08:51 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 01:37:05 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		main(int argc, char **argv)
 		mlx_hook(env.win, KeyPress, KeyPressMask, key_press_hook, &env);
 		mlx_hook(env.win, KeyRelease, KeyReleaseMask, key_release_hook, &env);
 		mlx_hook(env.win, MotionNotify, PointerMotionMask, pointer_motion_hook, &env);
-		mlx_loop_hook(env.mlx, expose_hook, &env);
+		mlx_loop_hook(env.mlx, &expose_hook, &env);
 		mlx_loop(env.mlx);
 	}
 	else
