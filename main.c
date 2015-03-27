@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 07:24:31 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 08:20:23 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_initenv(t_env *env, int width, int height)
 		ft_putendl_fd("Error: env", 2);
 		exit(1);
 	}
-	env->win = mlx_new_window(env->mlx, width, height, "TITRE DE MEEEEEEEEREDE");
+	env->win = mlx_new_window(env->mlx, width, height, "TITRE DE MEEEEEEEERDE");
 	env->w_win = width;
 	env->h_win = height;
 	env->sz_wall = 128;

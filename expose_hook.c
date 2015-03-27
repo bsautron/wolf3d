@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 07:33:21 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 08:19:26 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,25 @@ static void	ft_process(t_env *env)
 		env->mid = 51;
 }
 
+static void	ft_viseur_too(t_env *env, int i, int j)
+{
+	env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line] = 0x01;
+	env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
+	env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
+	env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line] = 0x01;
+	env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
+	env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
+}
+static void	ft_viseur_too2(t_env *env, int i, int j)
+{
+	env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line] = 0x01;
+	env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line + 1] = 0x44;
+	env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line + 2] = 0xB7;
+	env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line] = 0x01;
+	env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line + 1] = 0x44;
+	env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line + 2] = 0xB7;
+}
+
 static void	ft_viseur(t_env *env)
 {
 	int		i;
@@ -123,12 +142,7 @@ static void	ft_viseur(t_env *env)
 	j = env->w_win / 2 + 10;
 	while (i < (int)env->w_win / 2 - 2)
 	{
-		env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line] = 0x01;
-		env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
-		env->img.char_img[i * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
-		env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line] = 0x01;
-		env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
-		env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
+		ft_viseur_too(env, i, j);
 		j--;
 		i++;
 	}
@@ -136,12 +150,7 @@ static void	ft_viseur(t_env *env)
 	j = env->h_win / 2 + 10;
 	while (i < (int)env->h_win / 2 - 2)
 	{
-		env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line] = 0x01;
-		env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line + 1] = 0x44;
-		env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line + 2] = 0xB7;
-		env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line] = 0x01;
-		env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line + 1] = 0x44;
-		env->img.char_img[env->w_win / 2 * 4 + j * env->img.size_line + 2] = 0xB7;
+		ft_viseur_too2(env, i, j);
 		j--;
 		i++;
 	}
@@ -150,10 +159,8 @@ static void	ft_viseur(t_env *env)
 	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line + 2] = 0xB7;
 }
 
-static void	ft_string(t_env *env)
+static void	ft_string_too(t_env *env)
 {
-	char	*text;
-
 	mlx_string_put(env->mlx, env->win, 50, 50, 0xB74401, "Up:     W");
 	mlx_string_put(env->mlx, env->win, 50, 70, 0xB74401, "Down:   S");
 	mlx_string_put(env->mlx, env->win, 50, 90, 0xB74401, "Right:  D");
@@ -161,6 +168,13 @@ static void	ft_string(t_env *env)
 	mlx_string_put(env->mlx, env->win, 190, 50, 0xB74401, "Turn Left:   <-");
 	mlx_string_put(env->mlx, env->win, 190, 70, 0xB74401, "Turn Right:  ->");
 	mlx_string_put(env->mlx, env->win, 190, 90, 0xB74401, "Run:         Shift");
+}
+
+static void	ft_string(t_env *env)
+{
+	char	*text;
+
+	ft_string_too(env);
 	text = ft_itoa(env->bruno.pos.y);
 	mlx_string_put(env->mlx, env->win, env->w_win / 2 - 30, 70, 0xB74401, text);
 	free(text);
@@ -171,13 +185,18 @@ static void	ft_string(t_env *env)
 	mlx_string_put(env->mlx, env->win, env->w_win / 2 + 70, 70, 0xB74401, text);
 	free(text);
 	if (env->bruno.angle > 45 && env->bruno.angle <= 135)
-		mlx_string_put(env->mlx, env->win, env->w_win / 2, 50, 0xB74401, "North");
+		mlx_string_put(env->mlx,
+				env->win, env->w_win / 2, 50, 0xB74401, "North");
 	if (env->bruno.angle > 135 && env->bruno.angle <= 225)
-		mlx_string_put(env->mlx, env->win, env->w_win / 2, 50, 0xB74401, "West");
+		mlx_string_put(env->mlx, env->win,
+				env->w_win / 2, 50, 0xB74401, "West");
 	if (env->bruno.angle > 225 && env->bruno.angle <= 315)
-		mlx_string_put(env->mlx, env->win, env->w_win / 2, 50, 0xB74401, "South");
-	if ((env->bruno.angle > 315 && env->bruno.angle <= 360) || (env->bruno.angle >= 0 && env->bruno.angle <= 45))
-		mlx_string_put(env->mlx, env->win, env->w_win / 2, 50, 0xB74401, "East");
+		mlx_string_put(env->mlx, env->win,
+				env->w_win / 2, 50, 0xB74401, "South");
+	if ((env->bruno.angle > 315 && env->bruno.angle <= 360)
+			|| (env->bruno.angle >= 0 && env->bruno.angle <= 45))
+		mlx_string_put(env->mlx, env->win,
+				env->w_win / 2, 50, 0xB74401, "East");
 }
 
 int		expose_hook(t_env *env)
