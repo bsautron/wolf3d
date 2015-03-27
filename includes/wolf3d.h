@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 05:37:43 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 05:39:26 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <time.h>
 # include <myx.h>
-# include "libft.h"
-# include "get_next_line.h"
+# include <libft.h>
+# include <get_next_line.h>
 
 #include <stdio.h>//////////////////
 
