@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 08:19:26 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/27 08:30:54 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ static void	go_left(t_env *env, float run)
 	pc = ft_minicase(*env, tmp);
 	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
 		env->bruno.pos.y = tmp.y;
-
 }
 
-static void go_right(t_env *env, float run)
+static void	go_right(t_env *env, float run)
 {
-	t_pt2d      pc;
-	t_pt2d      tmp;
+	t_pt2d		pc;
+	t_pt2d		tmp;
+
 	tmp.y = env->bruno.pos.y;
 	tmp.x = env->bruno.pos.x - run / 2 * cos(ft_dtor(env->bruno.angle + 90));
 	pc = ft_minicase(*env, tmp);
@@ -78,10 +78,9 @@ static void go_right(t_env *env, float run)
 	pc = ft_minicase(*env, tmp);
 	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
 		env->bruno.pos.y = tmp.y;
-
 }
 
-static void	ft_process(t_env *env)
+static void	ft_move(t_env *env)
 {
 	float		run;
 
@@ -96,6 +95,11 @@ static void	ft_process(t_env *env)
 		go_left(env, run);
 	if (env->input.right == 1)
 		go_right(env, run);
+}
+
+static void	ft_process(t_env *env)
+{
+	ft_move(env);
 	if (env->input.w_up == 1)
 		env->mid += 50;
 	if (env->input.w_down == 1)
@@ -123,6 +127,7 @@ static void	ft_viseur_too(t_env *env, int i, int j)
 	env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 1] = 0x44;
 	env->img.char_img[j * 4 + (env->h_win / 2) * env->img.size_line + 2] = 0xB7;
 }
+
 static void	ft_viseur_too2(t_env *env, int i, int j)
 {
 	env->img.char_img[env->w_win / 2 * 4 + i * env->img.size_line] = 0x01;
@@ -141,22 +146,17 @@ static void	ft_viseur(t_env *env)
 	i = env->w_win / 2 - 10;
 	j = env->w_win / 2 + 10;
 	while (i < (int)env->w_win / 2 - 2)
-	{
-		ft_viseur_too(env, i, j);
-		j--;
-		i++;
-	}
+		ft_viseur_too(env, i++, j--);
 	i = env->h_win / 2 - 10;
 	j = env->h_win / 2 + 10;
 	while (i < (int)env->h_win / 2 - 2)
-	{
-		ft_viseur_too2(env, i, j);
-		j--;
-		i++;
-	}
-	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line] = 0x01;
-	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line + 1] = 0x44;
-	env->img.char_img[env->w_win / 2 * 4 + env->h_win / 2 * env->img.size_line + 2] = 0xB7;
+		ft_viseur_too2(env, i++, j--);
+	env->img.char_img[env->w_win / 2 * 4
+		+ env->h_win / 2 * env->img.size_line] = 0x01;
+	env->img.char_img[env->w_win / 2 * 4
+		+ env->h_win / 2 * env->img.size_line + 1] = 0x44;
+	env->img.char_img[env->w_win / 2 * 4
+		+ env->h_win / 2 * env->img.size_line + 2] = 0xB7;
 }
 
 static void	ft_string_too(t_env *env)
