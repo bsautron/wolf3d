@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 22:20:09 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 23:59:50 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct		s_env
 	t_perso	bruno;
 	double	alpha;
 	t_input	input;
-	t_pic	pic[2];
+	t_pic	pic[3];
 	t_pt2d	hit_h;
 	t_pt2d	hit_v;
 	t_pt2d	hit;

@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 21:53:45 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/29 00:30:59 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,11 @@ static void	ft_arme(t_env *env)
 	i = HEIGHT / 2 - 40;
 	y = 0;
 	trans = env->pic[1].char_img[0]; 
-	while (y < env->pic[1].height && i < HEIGHT - 1)
+	while (i < HEIGHT - 1 && y < env->pic[1].height)
 	{
-		j =  WIDTH / 2 - (env->pic[1].width / (2 * 500 / (double)env->h_win)) / 2 - 5;
+		j =  WIDTH / 2 - (env->pic[1].width / (2 * 120 / (double)env->h_win)) / 2 - 5;
 		x = 0;
-		while (x < env->pic[1].width && j < WIDTH - 1)
+		while (j < WIDTH - 1 && x < env->pic[1].width)
 		{
 			if (env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line] != trans)
 			{
@@ -129,10 +129,44 @@ static void	ft_arme(t_env *env)
 			env->img.char_img[j * 4 + (int)i * env->img.size_line + 2] =
 				env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line + 1];
 			}
-			x += 2 * 500 / fmin((double)env->h_win, (double)env->w_win);
+			x += 2 * 120 / fmin((double)env->h_win, (double)env->w_win);
 			j++;
 		}
-		y += 2 * 500 / fmin((double)env->h_win, (double)env->w_win);
+		y += 2 * 120 / fmin((double)env->h_win, (double)env->w_win);
+		i++;
+	}
+}
+
+static void	ft_arme0(t_env *env)
+{
+	int		i;
+	int		j;
+	double	y;
+	double	x;
+	int		trans;
+
+	i = HEIGHT / 2 + HEIGHT / 15;
+	y = 0;
+	trans = env->pic[2].char_img[0]; 
+	while (i < HEIGHT - 1 && y < env->pic[2].height)
+	{
+		j =  WIDTH / 2;
+		x = 0;
+		while (j < WIDTH - 1 && x < env->pic[2].width)
+		{
+			if (env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line] != trans)
+			{
+			env->img.char_img[j * 4 + i * env->img.size_line] = 
+				env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line];
+			env->img.char_img[j * 4 + i * env->img.size_line + 1] =
+				env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line + 1];
+			env->img.char_img[j * 4 + (int)i * env->img.size_line + 2] =
+				env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line + 1];
+			}
+			x += 2 * 120 / fmin((double)env->h_win, (double)env->w_win);
+			j++;
+		}
+		y += 2 * 120 / fmin((double)env->h_win, (double)env->w_win);
 		i++;
 	}
 }
@@ -178,4 +212,6 @@ void		ft_draw(t_env *env)
 	}
 	if (env->input.accu)
 		ft_arme(env);
+	else
+		ft_arme0(env);
 }
