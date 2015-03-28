@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 21:35:52 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 22:20:09 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define W_RIGHT	124
 # define W_LEFT		123
 # define RUN		257
-# define ACCURACY	260
+# define ACCURACY	49
 
 typedef struct		s_pt2d
 {

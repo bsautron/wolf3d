@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 08:31:59 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 22:17:19 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,8 @@ int		expose_hook(t_env *env)
 	ft_process(env);
 	ft_bzero(env->img.char_img, HEIGHT * env->img.size_line);
 	ft_draw(env);
-	ft_viseur(env);
+	if (!env->input.accu)
+		ft_viseur(env);
 	mlx_do_sync(env->mlx);
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 	ft_string(env);
