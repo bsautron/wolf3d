@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 19:18:14 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 19:36:00 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_initenv(t_env *env, int width, int height)
 	env->img.img = mlx_new_image(env->mlx, env->w_win, env->h_win);
 	env->img.char_img = mlx_get_data_addr(env->img.img, &env->img.bpp, &env->img.size_line, &env->img.endian);
 	env->pic[0].img = mlx_xpm_file_to_image(env->mlx, "mur.xpm", &env->pic[0].width, &env->pic[0].height);
-	//env->pic[1].img = mlx_xpm_file_to_image(env->mlx, "sol.xpm", &env->pic[1].width, &env->pic[1].height);
+	env->pic[1].img = mlx_xpm_file_to_image(env->mlx, "arme.xpm", &env->pic[1].width, &env->pic[1].height);
 	env->pic[0].char_img = mlx_get_data_addr(env->pic[0].img, &env->pic[0].bpp, &env->pic[0].size_line, &env->pic[0].endian);
-	//env->pic[1].char_img = mlx_get_data_addr(env->pic[1].img, &env->pic[1].bpp, &env->pic[1].size_line, &env->pic[1].endian);
+	env->pic[1].char_img = mlx_get_data_addr(env->pic[1].img, &env->pic[1].bpp, &env->pic[1].size_line, &env->pic[1].endian);
 	ft_bzero(&env->input, sizeof(env->input));
 }
 

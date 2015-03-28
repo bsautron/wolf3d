@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 19:22:11 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 20:01:33 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,35 @@ static void	ft_murinf(t_env *env, int x, double h, int the_x)
 	}
 }
 
+static void	ft_arme(t_env *env)
+{
+	int		i;
+	int		j;
+	int		trans;
+
+	i = 0;
+
+	trans = env->pic[1].char_img[0]; 
+	while (i < 600)
+	{
+		j = 0;
+		while (j < 600)
+		{
+			if (env->pic[1].char_img[j * 4 + i * env->pic[1].size_line] != trans)
+			{
+			env->img.char_img[j * 4 + i * env->img.size_line] = 
+				env->pic[1].char_img[j * 4 + i * env->pic[1].size_line];
+			env->img.char_img[j * 4 + (int)i * env->img.size_line + 1] =
+				env->pic[1].char_img[j * 4 + i * env->pic[1].size_line + 1];
+			env->img.char_img[j * 4 + (int)i * env->img.size_line + 2] =
+				env->pic[1].char_img[j * 4 + i * env->pic[1].size_line + 1];
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void		ft_draw(t_env *env)
 {
 	size_t		x;
@@ -132,10 +161,10 @@ void		ft_draw(t_env *env)
 			env->h *= 1.5;
 		if (env->vorh == 'h')
 			the_mur_x = ((int)env->hit.x
-			* env->pic[0].width / env->sz_wall) % (int)env->pic[0].width;
+					* env->pic[0].width / env->sz_wall) % (int)env->pic[0].width;
 		else
 			the_mur_x = ((int)env->hit.y
-			* env->pic[0].width / env->sz_wall) % (int)env->pic[0].width;
+					* env->pic[0].width / env->sz_wall) % (int)env->pic[0].width;
 		the_floor_x = x * 3;
 		ft_plafond(env, x, env->h);
 		ft_murinf(env, x, env->h, the_mur_x);
@@ -144,4 +173,6 @@ void		ft_draw(t_env *env)
 		env->alpha = env->alpha - env->i_angle;
 		x++;
 	}
+	if (env->input.accu)
+		ft_arme(env);
 }
