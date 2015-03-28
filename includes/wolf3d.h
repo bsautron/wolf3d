@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 06:39:25 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 17:48:45 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 #include <stdio.h>//////////////////
 
-# define WIDTH		1500
+# define WIDTH		1200
 # define HEIGHT		800
 
 # define ESP		53
