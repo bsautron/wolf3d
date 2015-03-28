@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 05:34:39 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 05:38:12 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 19:19:12 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ int		key_release_hook(int keycode, t_env *env)
 		env->input.w_right = 0;
 	if (keycode == RUN)
 		env->input.run = 0;
+	if (keycode == ACCURACY)
+		env->input.accu = 0;
 	return (0);
 }

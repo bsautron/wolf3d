@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 08:54:47 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 19:22:11 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,17 @@ void		ft_draw(t_env *env)
 {
 	size_t		x;
 	double		d;
-	double		h;
 	int			the_mur_x;
 	int			the_floor_x;
 
 	env->alpha = env->bruno.angle + 30;
+	if (env->input.accu)
+	{
+		env->i_angle = 40.0 / (double)env->w_win;
+		env->alpha -= 10;
+	}
+	else
+		env->i_angle = 60.0 / (double)env->w_win;
 	x = 0;
 	while (x < env->w_win)
 	{
@@ -121,7 +127,9 @@ void		ft_draw(t_env *env)
 			env->alpha += 360;
 		d = ft_calcul(env, env->alpha);
 		d = d * cos(ft_dtor(env->bruno.angle - env->alpha));
-		h = env->sz_wall / d * env->bruno.d_proj;
+		env->h = env->sz_wall / d * env->bruno.d_proj;
+		if (env->input.accu)
+			env->h *= 1.5;
 		if (env->vorh == 'h')
 			the_mur_x = ((int)env->hit.x
 			* env->pic[0].width / env->sz_wall) % (int)env->pic[0].width;
@@ -129,10 +137,10 @@ void		ft_draw(t_env *env)
 			the_mur_x = ((int)env->hit.y
 			* env->pic[0].width / env->sz_wall) % (int)env->pic[0].width;
 		the_floor_x = x * 3;
-		ft_plafond(env, x, h);
-		ft_murinf(env, x, h, the_mur_x);
-		ft_mursup(env, x, h, the_mur_x);
-		ft_floor(env, x, h);
+		ft_plafond(env, x, env->h);
+		ft_murinf(env, x, env->h, the_mur_x);
+		ft_mursup(env, x, env->h, the_mur_x);
+		ft_floor(env, x, env->h);
 		env->alpha = env->alpha - env->i_angle;
 		x++;
 	}

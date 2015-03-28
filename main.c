@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/27 08:20:23 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 19:18:14 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,12 @@ int		main(int argc, char **argv)
 	env.bruno.pos.x = 111;
 	env.bruno.pos.y = 111;
 	env.bruno.angle = 300;
-
-	(void)i;
-	(void)j;
 	if (argc == 2)
 	{
 		ft_initenv(&env, WIDTH, HEIGHT);
 		env.bruno.d_proj = (env.w_win / 2) / tan(ft_dtor(30));
 		env.i_angle = 60.0 / (double)env.w_win;
 		ft_getmap(&env, argv[1]);
-
 		ft_zoom_map(&env);
 		i = 0;
 		while (i < env.h_minimap)
@@ -83,6 +79,5 @@ int		main(int argc, char **argv)
 		ft_putendl_fd("Error: give me 1 map", 2);
 		return (1);
 	}
-	while (1);
 	return (0);
 }

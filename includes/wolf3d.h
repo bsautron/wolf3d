@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 17:48:45 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/28 19:14:41 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define W_RIGHT	124
 # define W_LEFT		123
 # define RUN		257
+# define ACCURACY	260
 
 typedef struct		s_pt2d
 {
@@ -76,6 +77,7 @@ typedef struct		s_input
 	char			w_left;
 	char			w_right;
 	char			run;
+	char			accu;
 }					t_input;
 
 typedef struct		s_pic
@@ -112,6 +114,7 @@ typedef struct		s_env
 	t_pt2d	hit;
 	int		mid;
 	char	vorh;
+	double	h;
 }					t_env;
 
 
