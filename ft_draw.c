@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/29 00:30:59 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/29 16:03:12 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,11 @@ static void	ft_pt(t_env *env, POS, int y_p, int the_x)
 	else if (env->vorh == 'v' && (env->alpha < 90 || env->alpha >= 270))
 		nuance = 0xFFFF00;
 	env->img.char_img[x * 4 + (int)y * env->img.size_line] =
-		env->pic[0].char_img[(int)the_x * 4 + (int)y_p
-		* env->pic[0].size_line] + 0.1 * (unsigned char)nuance;
+		env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line] + 0.1 * (unsigned char)nuance;
 	env->img.char_img[x * 4 + (int)y * env->img.size_line + 1] =
-		env->pic[0].char_img[(int)the_x * 4 + (int)y_p
-		* env->pic[0].size_line + 1] + 0.1 * (unsigned char)(nuance >> 8);
+		env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 1]  + 0.1 * (unsigned char)(nuance >> 8);
 	env->img.char_img[x * 4 + (int)y * env->img.size_line + 2] =
-		env->pic[0].char_img[(int)the_x * 4 + (int)y_p
-		* env->pic[0].size_line + 2] + 0.1 * (unsigned char)(nuance >> 16);
+		env->pic[0].char_img[(int)the_x * 4 + (int)y_p * env->pic[0].size_line + 2] + 0.1 * (unsigned char)(nuance >> 16);
 }
 
 static void	ft_mursup(t_env *env, int x, double h, int the_x)
