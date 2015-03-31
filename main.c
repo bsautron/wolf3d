@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:23:13 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 07:14:48 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:16:30 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ int		main(int argc, char **argv)
 {
 	t_env		env;
 
-	env.bruno.pos.x = 111;
-	env.bruno.pos.y = 111;
-	env.bruno.angle = 300;
 	if (argc == 2)
 	{
 		ft_initenv(&env, WIDTH, HEIGHT);
