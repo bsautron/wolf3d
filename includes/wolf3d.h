@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 07:28:29 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:47:37 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,6 @@ t_pt2d		ft_minicase(t_env env, t_pt2d pn);
 void		ft_arme(t_env *env, int repo);
 void		ft_mur(t_env *env, int x, double h, int the_x);
 void		ft_go(t_env *env, float run, char go);
+void		ft_viseur(t_env *env);
 
 #endif

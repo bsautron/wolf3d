@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 09:35:27 by bsautron          #+#    #+#              #
-#    Updated: 2015/03/31 07:28:42 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/31 07:47:58 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c \
 	  ft_getmap.c \
 	  ft_zoom_map.c \
 	  ft_calcul.c \
+	  ft_viseur.c \
 	  ft_arme.c \
 	  ft_mur.c \
 	  ft_go.c \
