@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 09:35:27 by bsautron          #+#    #+#              #
-#    Updated: 2015/03/31 07:15:33 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/31 07:28:42 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = main.c \
 	  ft_calcul.c \
 	  ft_arme.c \
 	  ft_mur.c \
+	  ft_go.c \
 	  ft_make_increment.c \
 	  ft_draw.c \
 	  ft_minicase.c \

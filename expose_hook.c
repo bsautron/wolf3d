@@ -6,79 +6,11 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 22:17:19 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:27:55 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-static void	go_up(t_env *env, float run)
-{
-	t_pt2d		pc;
-	t_pt2d		tmp;
-
-	tmp.y = env->bruno.pos.y;
-	tmp.x = env->bruno.pos.x + run * cos(ft_dtor(env->bruno.angle));
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.x = tmp.x;
-	tmp.y = env->bruno.pos.y - run * sin(ft_dtor(env->bruno.angle));
-	tmp.x = env->bruno.pos.x;
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.y = tmp.y;
-}
-
-static void	go_down(t_env *env, float run)
-{
-	t_pt2d		pc;
-	t_pt2d		tmp;
-
-	tmp.y = env->bruno.pos.y;
-	tmp.x = env->bruno.pos.x - run / 2 * cos(ft_dtor(env->bruno.angle));
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.x = tmp.x;
-	tmp.y = env->bruno.pos.y + run / 2 * sin(ft_dtor(env->bruno.angle));
-	tmp.x = env->bruno.pos.x;
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.y = tmp.y;
-}
-
-static void	go_left(t_env *env, float run)
-{
-	t_pt2d		pc;
-	t_pt2d		tmp;
-
-	tmp.y = env->bruno.pos.y;
-	tmp.x = env->bruno.pos.x + run / 2 * cos(ft_dtor(env->bruno.angle + 90));
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.x = tmp.x;
-	tmp.y = env->bruno.pos.y - run / 2 * sin(ft_dtor(env->bruno.angle + 90));
-	tmp.x = env->bruno.pos.x;
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.y = tmp.y;
-}
-
-static void	go_right(t_env *env, float run)
-{
-	t_pt2d		pc;
-	t_pt2d		tmp;
-
-	tmp.y = env->bruno.pos.y;
-	tmp.x = env->bruno.pos.x - run / 2 * cos(ft_dtor(env->bruno.angle + 90));
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.x = tmp.x;
-	tmp.y = env->bruno.pos.y + run / 2 * sin(ft_dtor(env->bruno.angle + 90));
-	tmp.x = env->bruno.pos.x;
-	pc = ft_minicase(*env, tmp);
-	if (env->map[(int)pc.y][(int)pc.x].obs != 1)
-		env->bruno.pos.y = tmp.y;
-}
 
 static void	ft_move(t_env *env)
 {
@@ -88,13 +20,13 @@ static void	ft_move(t_env *env)
 	if (env->input.run == 1)
 		run = 8.5;
 	if (env->input.up == 1)
-		go_up(env, run);
+		ft_go(env, run, 'u');
 	if (env->input.down == 1)
-		go_down(env, run);
+		ft_go(env, run, 'd');
 	if (env->input.left == 1)
-		go_left(env, run);
+		ft_go(env, run, 'l');
 	if (env->input.right == 1)
-		go_right(env, run);
+		ft_go(env, run, 'r');
 }
 
 static void	ft_process(t_env *env)
