@@ -6,7 +6,7 @@
 /*   By: bsautron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/31 06:25:00 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 06:35:09 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 06:52:40 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void ft_arme1_aux(int i, int j, POS, t_env *env)
 
 static void ft_arme1(t_env *env)
 {
-	int     i;
-	int     j;
-	double  y;
-	double  x;
-	int     trans;
+	int		i;
+	int		j;
+	double	y;
+	double	x;
+	int		trans;
 
 	i = HEIGHT / 2 - 40;
 	y = 0;
@@ -63,11 +63,11 @@ static void ft_arme0_aux(int i, int j, POS, t_env *env)
 
 static void ft_arme0(t_env *env)
 {
-	int     i;
-	int     j;
-	double  y;
-	double  x;
-	int     trans;
+	int		i;
+	int		j;
+	double	y;
+	double	x;
+	int		trans;
 
 	i = HEIGHT / 2 + HEIGHT / 15;
 	y = 0;
@@ -88,7 +88,7 @@ static void ft_arme0(t_env *env)
 	}
 }
 
-void	ft_arme(t_env *env, int repo)
+void		ft_arme(t_env *env, int repo)
 {
 	if (repo == 1)
 		ft_arme1(env);
