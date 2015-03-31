@@ -6,7 +6,7 @@
 /*   By: bsautron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/31 06:25:00 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 06:52:40 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:41:13 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void ft_arme1(t_env *env)
 	trans = env->pic[1].char_img[0];
 	while (i < HEIGHT - 1 && y < env->pic[1].height)
 	{
-		j = WIDTH / 2 - (env->pic[1].width * (double)env->h_win) / 120 - 5;
+		j = WIDTH / 2 - (env->pic[1].width * (double)env->h_win) / 480 - 5;
 		x = 0;
 		while (j < WIDTH - 1 && x < env->pic[1].width)
 		{
