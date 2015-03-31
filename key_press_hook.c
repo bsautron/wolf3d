@@ -6,13 +6,13 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 04:14:56 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 05:03:15 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:11:40 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		key_press_hook(int keycode, t_env *env)
+static void	ft_direction(int keycode, t_env *env)
 {
 	if (keycode == UP)
 	{
@@ -34,6 +34,10 @@ int		key_press_hook(int keycode, t_env *env)
 		env->input.left = 0;
 		env->input.right = 1;
 	}
+}
+
+static void	ft_camera(int keycode, t_env *env)
+{
 	if (keycode == W_UP)
 	{
 		env->input.w_up = 1;
@@ -54,6 +58,12 @@ int		key_press_hook(int keycode, t_env *env)
 		env->input.w_left = 0;
 		env->input.w_right = 1;
 	}
+}
+
+int			key_press_hook(int keycode, t_env *env)
+{
+	ft_direction(keycode, env);
+	ft_camera(keycode, env);
 	if (keycode == RUN)
 		env->input.run = 1;
 	if (keycode == ACCURACY)

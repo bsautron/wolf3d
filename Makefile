@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 09:35:27 by bsautron          #+#    #+#              #
-#    Updated: 2015/03/31 07:07:58 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/31 07:15:33 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 SRC = main.c \
 	  key_press_hook.c \
 	  key_release_hook.c \
-	  pointer_motion_hook.c \
+	  p_motion_hook.c \
 	  expose_hook.c \
 	  \
 	  ft_getmap.c \

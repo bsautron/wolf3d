@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 06:50:06 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:15:15 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int			key_hook(int keycode, t_env *env);
 int			key_press_hook(int keycode, t_env *env);
 int			key_release_hook(int keycode, t_env *env);
 int			expose_hook(t_env *env);
-int			pointer_motion_hook(int x, int y, t_env *env);
+int			p_motion_hook(int x, int y, t_env *env);
 
 void		ft_getmap(t_env *env, char *file);
 void		ft_zoom_map(t_env *env);

@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 05:34:39 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/28 19:19:12 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:11:56 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		key_release_hook(int keycode, t_env *env)
 	if (keycode == DOWN)
 		env->input.down = 0;
 	if (keycode == LEFT)
-		env->input.left= 0;
+		env->input.left = 0;
 	if (keycode == RIGHT)
 		env->input.right = 0;
 	if (keycode == W_UP)
