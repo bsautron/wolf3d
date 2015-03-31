@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 04:17:48 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 04:52:45 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_perso
 {
 	t_pt2d		pos;
 	double		angle;
+	float		move;
 	double		d_proj;
 }					t_perso;
 

@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 20:32:16 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/29 16:09:48 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 05:19:11 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,12 @@ static void	ft_arme(t_env *env)
 		{
 			if (env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line] != trans)
 			{
-			env->img.char_img[j * 4 + i * env->img.size_line] = 
-				env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line];
-			env->img.char_img[j * 4 + i * env->img.size_line + 1] =
-				env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line + 1];
-			env->img.char_img[j * 4 + (int)i * env->img.size_line + 2] =
-				env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line + 1];
+				env->img.char_img[j * 4 + i * env->img.size_line] = 
+					env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line];
+				env->img.char_img[j * 4 + i * env->img.size_line + 1] =
+					env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line + 1];
+				env->img.char_img[j * 4 + (int)i * env->img.size_line + 2] =
+					env->pic[1].char_img[(int)x * 4 + (int)y * env->pic[1].size_line + 1];
 			}
 			x += 2 * 120 / fmin((double)env->h_win, (double)env->w_win);
 			j++;
@@ -145,7 +145,7 @@ static void	ft_arme0(t_env *env)
 	i = HEIGHT / 2 + HEIGHT / 15;
 	y = 0;
 	trans = env->pic[2].char_img[0]; 
-	while (i < HEIGHT - 1 && y < env->pic[2].height)
+	while (i - (int)(sin(env->bruno.move) * sin(env->bruno.move) * 30) < HEIGHT - 1 && y < env->pic[2].height)
 	{
 		j =  WIDTH / 2;
 		x = 0;
@@ -153,12 +153,12 @@ static void	ft_arme0(t_env *env)
 		{
 			if (env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line] != trans)
 			{
-			env->img.char_img[j * 4 + i * env->img.size_line] = 
-				env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line];
-			env->img.char_img[j * 4 + i * env->img.size_line + 1] =
-				env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line + 1];
-			env->img.char_img[j * 4 + (int)i * env->img.size_line + 2] =
-				env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line + 1];
+				env->img.char_img[j * 4 + (i - (int)(sin(env->bruno.move) * sin(env->bruno.move) * 30)) * env->img.size_line] = 
+					env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line];
+				env->img.char_img[j * 4 + (i - (int)(sin(env->bruno.move) * sin(env->bruno.move) * 30)) * env->img.size_line + 1] =
+					env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line + 1];
+				env->img.char_img[j * 4 + (i - (int)(sin(env->bruno.move) * sin(env->bruno.move) * 30)) * env->img.size_line + 2] =
+					env->pic[2].char_img[(int)x * 4 + (int)y * env->pic[2].size_line + 1];
 			}
 			x += 2 * 120 / fmin((double)env->h_win, (double)env->w_win);
 			j++;
@@ -175,6 +175,10 @@ void		ft_draw(t_env *env)
 	int			the_mur_x;
 
 	env->alpha = env->bruno.angle + 30;
+	if (env->input.up)
+		env->bruno.move += 0.14;
+	else
+		env->bruno.move = 0;
 	if (env->input.accu)
 	{
 		env->i_angle = 40.0 / (double)env->w_win;
