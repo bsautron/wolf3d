@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/18 19:08:01 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 07:48:08 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 07:49:10 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	ft_string(t_env *env)
 				env->w_win / 2, 50, 0xB74401, "East");
 }
 
-int		expose_hook(t_env *env)
+int			expose_hook(t_env *env)
 {
 	ft_process(env);
 	ft_bzero(env->img.char_img, HEIGHT * env->img.size_line);
