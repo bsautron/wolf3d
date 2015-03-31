@@ -6,7 +6,7 @@
 /*   By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/18 03:22:26 by bsautron          #+#    #+#             */
-/*   Updated: 2015/03/31 06:32:47 by bsautron         ###   ########.fr       */
+/*   Updated: 2015/03/31 06:50:06 by bsautron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ t_pt2d		ft_make_increment(t_env env, double angle, char axe);
 t_pt2d		ft_regu_maxmap(t_pt2d pn);
 t_pt2d		ft_minicase(t_env env, t_pt2d pn);
 void		ft_arme(t_env *env, int repo);
+void		ft_mur(t_env *env, int x, double h, int the_x);
 
 
 #endif
