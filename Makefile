@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 09:35:27 by bsautron          #+#    #+#              #
-#    Updated: 2015/03/27 06:27:01 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/31 04:47:57 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = main.c \
 	  ft_draw.c \
 	  ft_minicase.c \
 	  ft_dtor.c
-OBJ = $(SRC:%.c=obj/%.o)
+OBJ = $(SRC:%.c=.obj/%.o)
 HEADER = $(DIR_H)/ft_minishell.h \
 		 $(DIR_H)/libft.h \
 		 $(DIR_H)/libl.h \
@@ -46,18 +46,18 @@ $(NAME): $(OBJ)
 libs:
 	@make -C libft/
 
-obj/%.o: %.c includes/wolf3d.h
+.obj/%.o: %.c includes/wolf3d.h
 	@echo "	$<"
 	@$(CC) -o $@ $(FLAGS) -I includes/ -c $<
 
 dor:
-	@mkdir obj 2>/dev/null || env -i
+	@mkdir .obj 2>/dev/null || env -i
 
 clean:
 	@rm -f $(OBJ)
+	@rmdir .obj 2>/dev/null || env -i
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f *~
 
 re: fclean all

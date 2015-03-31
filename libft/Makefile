@@ -6,7 +6,7 @@
 #    By: bsautron <bsautron@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/25 00:45:50 by bsautron          #+#    #+#              #
-#    Updated: 2015/03/23 11:24:45 by bsautron         ###   ########.fr        #
+#    Updated: 2015/03/31 04:48:06 by bsautron         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,22 +93,26 @@ SRC = ft_memset.c \
 	  ft_lstmap.c \
 	  \
 	  get_next_line.c
-OBJ = $(SRC:%.c=../obj/%.o)
+OBJ = $(SRC:%.c=../.obj/%.o)
 NAME = libft.a
 
-all: $(NAME)
+all: dor $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "\033[0m"
 
-../obj/%.o: %.c ../includes/libft.h ../includes/get_next_line.h
+dor:
+	@mkdir ../.obj 2>/dev/null || env -i
+
+../.obj/%.o: %.c ../includes/libft.h ../includes/get_next_line.h
 	@echo "\033[36m   $<"
 	@$(CC) -o $@ $(FLAGS) -I ../includes/ -c $<
 
 clean:
 	@rm -f $(OBJ)
+	@rmdir ../.obj 2>/dev/null || env -i
 	@echo "\033[33;31m===> Suppresion des objets"
 
 fclean: clean
