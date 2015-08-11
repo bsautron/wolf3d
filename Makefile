@@ -37,7 +37,7 @@ HEADER = $(DIR_H)/ft_minishell.h \
 		 $(DIR_H)/get_next_line.h
 NAME = wolf3d
 FLAGS = -Wall -Wextra -Werror
-LX11 = -framework OpenGL -framework AppKit -lmlx
+LX11 = -framework OpenGL -framework AppKit -L./minilibx_macos/ -lmlx
 LIB = -L./libft/ -lft
 
 all: dor libs $(NAME)
